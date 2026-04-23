@@ -1747,7 +1747,8 @@ window.__TWEAKS = {
     </dl>
   </div>
 
-  <form class="form" id="contact-form" novalidate>
+  <form class="form" id="contact-form" action="https://formspree.io/f/mgorprgg" method="POST" novalidate>
+    <input type="hidden" name="_subject" value="Rugby enquiry — Michel Photography"/>
     <div class="form__row">
       <label for="f-name"><span class="num">01</span>Your name</label>
       <input type="text" id="f-name" name="name" placeholder="Jane Doe" required/>
@@ -1967,14 +1968,11 @@ document.addEventListener('keydown', e => {
 const contactForm = document.getElementById('contact-form');
 const formNote = document.getElementById('form-note');
 if (contactForm) {
-  contactForm.addEventListener('submit', e => {
+  contactForm.addEventListener('submit', async e => {
     e.preventDefault();
     const data = new FormData(contactForm);
     const name = (data.get('name') || '').toString().trim();
     const email = (data.get('email') || '').toString().trim();
-    const role = (data.get('role') || '').toString();
-    const date = (data.get('date') || '').toString().trim();
-    const message = (data.get('message') || '').toString().trim();
 
     if (!name || !email) {
       formNote.textContent = 'Name and email please';
@@ -1982,22 +1980,27 @@ if (contactForm) {
       return;
     }
 
-    const lines = [
-      `From: ${name} <${email}>`,
-      `Role: ${role}`,
-      date ? `Fixture date: ${date}` : null,
-      '',
-      message || '(no message)',
-    ].filter(Boolean);
-
-    const subject = encodeURIComponent(`Rugby enquiry — ${name}`);
-    const body = encodeURIComponent(lines.join('\n'));
-    // Update this to your real email address
-    const to = 'hello@jamesmichelphotography.com';
-    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
-
-    formNote.textContent = 'Opening your mail client…';
+    formNote.textContent = 'Sending…';
     formNote.style.color = 'var(--ink-dim)';
+
+    try {
+      const res = await fetch(contactForm.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        contactForm.reset();
+        formNote.textContent = 'Thanks — I\'ll be in touch.';
+        formNote.style.color = 'var(--ink-dim)';
+      } else {
+        formNote.textContent = 'Something went wrong. Email hello@jamesmichelphotography.com instead.';
+        formNote.style.color = 'var(--accent)';
+      }
+    } catch (err) {
+      formNote.textContent = 'Network error. Email hello@jamesmichelphotography.com instead.';
+      formNote.style.color = 'var(--accent)';
+    }
   });
 }
 
