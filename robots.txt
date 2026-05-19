@@ -1,2 +1,3 @@
 User-agent: *
 Disallow: /cavalry-rebels-apr25-album.html
+Disallow: /saratoga-albany-may16-album.html
