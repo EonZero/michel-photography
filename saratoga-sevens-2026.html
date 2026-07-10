@@ -160,7 +160,7 @@
       <a class="btn primary" id="mainCta" href="#">Browse the Gallery</a>
       <a class="btn ghost" href="saratoga-7s.html">Last Year&rsquo;s Tournament</a>
     </div>
-    <p class="cta-note" id="ctaNote" style="margin-top:14px">Photos go live within one week of July 11 — the gallery link above lets you register for the launch email.</p>
+    <p class="cta-note" id="ctaNote" style="margin-top:14px">Photos go live within one week of July 11 — follow <a href="https://instagram.com/jamesmichelphotography" target="_blank" rel="noopener">@jamesmichelphotography</a> for the launch post.</p>
   </header>
 
   <section id="find" aria-labelledby="h-find">
@@ -264,7 +264,7 @@
 
   const cta  = document.getElementById('mainCta');
   const note = document.getElementById('ctaNote');
-  cta.href = GALLERY_URL; // pre-launch this points at the Pixieset placeholder (turn on email registration there)
+  cta.href = GALLERY_URL; // Pixieset goes straight to the gallery — no pre-launch email capture
 
   if (GALLERY_LIVE) {
     cta.textContent = "Browse the Gallery";
@@ -272,7 +272,7 @@
     document.getElementById('stripStatus').textContent  = "GALLERY IS LIVE · CODE SEVENS10 FOR 10% OFF";
     document.getElementById('stripStatus2').textContent = "GALLERY IS LIVE · CODE SEVENS10 FOR 10% OFF";
   } else {
-    cta.textContent = "Get Notified at Launch";
+    cta.textContent = "Visit the Gallery";
   }
 </script>
 
