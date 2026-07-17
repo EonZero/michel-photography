@@ -75,6 +75,16 @@
   .btn.ghost:hover{border-color:var(--ink)}
   .cta-note{font-family:var(--ff-mono);font-size:.72rem;color:var(--ink-dim);letter-spacing:.06em}
 
+  /* proof band */
+  .proof{padding:0 0 56px;border-bottom:1px solid var(--rule)}
+  .proof .lead{display:block;width:100%;aspect-ratio:3/2;object-fit:cover}
+  .proof .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-top:4px}
+  .proof .strip img{width:100%;aspect-ratio:4/3;object-fit:cover}
+  .proof figcaption{font-family:var(--ff-mono);font-size:.7rem;color:var(--ink-dim);letter-spacing:.1em;text-transform:uppercase;margin-top:14px}
+  .proof figcaption a{color:var(--ink-dim)}
+  .proof figcaption a:hover{color:var(--ink)}
+  @media(max-width:680px){.proof .strip{grid-template-columns:repeat(2,1fr)}}
+
   /* sections */
   section{padding:56px 0;border-bottom:1px solid var(--rule)}
   .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:28px}
@@ -162,6 +172,17 @@
     </div>
     <p class="cta-note" id="ctaNote" style="margin-top:14px">Photos go live within one week of July 11 — follow <a href="https://instagram.com/jamesmichelphotography" target="_blank" rel="noopener">@jamesmichelphotography</a> for the launch post.</p>
   </header>
+
+  <figure class="proof" aria-label="Sample photography from last year's tournament">
+    <img class="lead" src="images/saratoga/IMG_2593.webp" alt="Two players leap for a kicked ball against the treeline" loading="lazy"/>
+    <div class="strip">
+      <img src="images/saratoga/IMG_4853.webp" alt="Ball carrier powers through a face-first tackle" loading="lazy"/>
+      <img src="images/saratoga/IMG_3835.webp" alt="Grinning ball carrier sprints clear toward the try line" loading="lazy"/>
+      <img src="images/saratoga/IMG_5043.webp" alt="Teammates celebrate past the try line" loading="lazy"/>
+      <img src="images/saratoga/IMG_4204.webp" alt="Attacker squares off one-on-one with a defender" loading="lazy"/>
+    </div>
+    <figcaption>Shot at last year&rsquo;s tournament — <a href="saratoga-7s.html">Saratoga Sevens &rsquo;25, full dossier →</a></figcaption>
+  </figure>
 
   <section id="find" aria-labelledby="h-find">
     <div class="sec-head"><span class="num">§ 01</span><h2 id="h-find">Find Your Team</h2></div>
@@ -268,7 +289,7 @@
 
   if (GALLERY_LIVE) {
     cta.textContent = "Browse the Gallery";
-    note.textContent = "Launch week: use code SEVENS10 at checkout for 10% off.";
+    note.textContent = "Straight to the collection — quick email sign-in, then browse everything. Code SEVENS10 for 10% off.";
     document.getElementById('stripStatus').textContent  = "GALLERY IS LIVE · CODE SEVENS10 FOR 10% OFF";
     document.getElementById('stripStatus2').textContent = "GALLERY IS LIVE · CODE SEVENS10 FOR 10% OFF";
   } else {

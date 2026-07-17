@@ -2676,7 +2676,7 @@ function renderGrid(filter = 'all') {
     el.className = 'tile';
     el.dataset.idx = i;
     el.innerHTML = `
-      <img src="${p.src}" alt="" loading="lazy"/>
+      <img src="${p.src}" alt="${p.title} — ${p.match}" loading="lazy"/>
       <span class="tile__idx">${idx}</span>
     `;
     el.addEventListener('click', () => openLB(shown, i));
@@ -2705,7 +2705,7 @@ function renderLBStrip() {
   lbList.forEach((p, i) => {
     const t = document.createElement('button');
     t.className = 'lb__thumb' + (i === lbIdx ? ' is-active' : '');
-    t.innerHTML = `<img src="${p.src}" alt="" loading="lazy"/>`;
+    t.innerHTML = `<img src="${p.src}" alt="${p.title} — ${p.match}" loading="lazy"/>`;
     t.addEventListener('click', () => { lbIdx = i; updateLB(); });
     lbStrip.appendChild(t);
   });
